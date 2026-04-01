@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Parche de Nanda</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2b0d0d, #5c1a1a, #8b0000);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff8e7;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(20, 5, 5, 0.6);
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 1000px;
+            padding: 40px;
+            border-radius: 25px;
+            background: rgba(40, 10, 10, 0.75);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 35px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            animation: fadeIn 1.2s ease;
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .subtitulo {
+            font-size: 20px;
+            color: #ffe4b5;
+            margin-bottom: 30px;
+        }
+
+        .img-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .img-box img {
+            width: 420px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 18px;
+            display: block;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .img-box img:hover {
+            transform: scale(1.15);
+        }
+
+        .btn-animar {
+            margin-top: 25px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            background: #ffd700;
+            color: #2b0d0d;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn-animar:hover {
+            transform: scale(1.05);
+        }
+
+        .girar {
+            animation: girarQR 1s ease;
+        }
+
+        @keyframes girarQR {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .titulo {
+                font-size: 35px;
+            }
+
+            .subtitulo {
+                font-size: 16px;
+            }
+
+            .img-box img {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <h1 class="titulo">🍔 El Parche de Nanda</h1>
+        <p class="subtitulo">Escanea el código y mira nuestro menú</p>
+
+        <div class="img-box">
+            <img id="qr" src="img/Qr-PN.png" alt="QR Parche de Nanda">
+        </div>
+
+        
+    </div>
+
+    <script>
+        const btn = document.getElementById("btnAnimar");
+        const qr = document.getElementById("qr");
+
+        btn.addEventListener("click", () => {
+            qr.classList.add("girar");
+
+            setTimeout(() => {
+                qr.classList.remove("girar");
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
